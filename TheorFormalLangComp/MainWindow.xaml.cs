@@ -24,12 +24,23 @@ namespace TheorFormalLangComp
             DataContext = new MainWindowVM();
         }
 
+
         void WindowClosing(object sender, CancelEventArgs e)
         {
             if (DataContext is MainWindowVM vm)
             {
                 vm.TrySave();
             }
+        }
+
+        private void Undo(object sender, RoutedEventArgs e)
+        {
+            textBox1.Undo();
+        }
+
+        private void Redo(object sender, RoutedEventArgs e)
+        {
+            textBox1.Redo();
         }
     }
 }

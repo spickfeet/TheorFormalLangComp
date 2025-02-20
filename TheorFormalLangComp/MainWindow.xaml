@@ -51,10 +51,10 @@
             <Button Width="60" Margin="5 5 5 5" Background="White" Command="{Binding SaveCommand}">
                 <Image Source="resource/save.png" Stretch="Uniform"/>
             </Button>
-            <Button Width="60" Margin="40 5 5 5" Background="White">
+            <Button Width="60" Margin="40 5 5 5" Background="White" Click="Undo">
                 <Image Source="resource/arrow.png" Stretch="Uniform"/>
             </Button>
-            <Button Width="60" Margin="5 5 5 5" Background="White">
+            <Button Width="60" Margin="5 5 5 5" Background="White" Click="Redo">
                 <Image Source="resource/right-arrow.png" Stretch="Uniform"/>
             </Button>
             <Button Width="60" Margin="5 5 5 5" Background="White">
@@ -71,7 +71,7 @@
             </Button>
         </StackPanel>
 
-        <TextBox Grid.Row="2" Margin="20, 10, 20, 10" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Text="{Binding TextInput,UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <TextBox x:Name="textBox1" Grid.Row="2" Margin="20, 10, 20, 10" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Text="{Binding TextInput,UpdateSourceTrigger=PropertyChanged}"></TextBox>
         <Border Grid.Row="3" BorderBrush="Gray" BorderThickness="1" Margin="20, 10, 20, 10">
             <TextBlock Background="White"></TextBlock>
         </Border>
