@@ -20,7 +20,6 @@
                 <MenuItem Header="Открыть"></MenuItem>
                 <MenuItem Header="Сохранить"></MenuItem>
                 <MenuItem Header="Сохранить как"></MenuItem>
-                <MenuItem Header="Выход"></MenuItem>
             </MenuItem>
             <MenuItem Header="Правка">
                 <MenuItem Header="Отменить"></MenuItem>
