@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.ComponentModel;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -21,6 +22,14 @@ namespace TheorFormalLangComp
         {
             InitializeComponent();
             DataContext = new MainWindowVM();
+        }
+
+        void WindowClosing(object sender, CancelEventArgs e)
+        {
+            if (DataContext is MainWindowVM vm)
+            {
+                vm.TrySave();
+            }
         }
     }
 }
