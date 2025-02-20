@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TheorFormalLangComp.ViewModel;
 
 namespace TheorFormalLangComp
 {
@@ -19,6 +20,7 @@ namespace TheorFormalLangComp
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new MainWindowVM();
         }
     }
 }
