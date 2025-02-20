@@ -8,4 +8,23 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="resource\paper.png" />
+    <Resource Include="resource\paper.png" />
+    <None Remove="resource\arrow.png" />
+    <Resource Include="resource\arrow.png" />
+    <None Remove="resource\copy.png" />
+    <Resource Include="resource\copy.png" />
+    <None Remove="resource\folder.png" />
+    <Resource Include="resource\folder.png" />
+    <None Remove="resource\paste.png" />
+    <Resource Include="resource\paste.png" />
+    <None Remove="resource\right-arrow.png" />
+    <Resource Include="resource\right-arrow.png" />
+    <None Remove="resource\save.png" />
+    <Resource Include="resource\save.png" />
+    <None Remove="resource\scissors.png" />
+    <Resource Include="resource\scissors.png" />
+  </ItemGroup>
+
 </Project>
