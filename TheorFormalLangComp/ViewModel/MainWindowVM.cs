@@ -73,14 +73,14 @@ namespace TheorFormalLangComp.ViewModel
             else { return false; }
         }
 
-        private bool TryConfirmClose() // Изменить название
+        public bool TrySave() // Изменить название
         {
             while (_fileSaved == false)
             {
                 MessageBoxResult result = MessageBox.Show(
                 "У вас есть несохраненные изменения. Хотите сохранить файл перед выходом?",
                 "Подтверждение",
-                MessageBoxButton.YesNoCancel,
+                MessageBoxButton.YesNo,
                 MessageBoxImage.Question);
 
                 if (result == MessageBoxResult.Yes)
@@ -102,7 +102,7 @@ namespace TheorFormalLangComp.ViewModel
 
         private void Open()
         {
-            if (TryConfirmClose()) 
+            if (TrySave()) 
             {
                 if (TryOpen() == false) return;
                 TextInput = _fileWorker.GetData();
@@ -112,7 +112,7 @@ namespace TheorFormalLangComp.ViewModel
 
         private void Create()
         {
-            if (TryConfirmClose())
+            if (TrySave())
             {
                 TextInput = "";
                 _fileSaved = true;
