@@ -25,6 +25,8 @@
     <Resource Include="resource\save.png" />
     <None Remove="resource\scissors.png" />
     <Resource Include="resource\scissors.png" />
+    <None Remove="resource\broom.png" />
+    <Resource Include="resource\broom.png" />
   </ItemGroup>
 
 </Project>

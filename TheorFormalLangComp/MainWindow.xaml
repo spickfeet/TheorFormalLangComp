@@ -52,6 +52,9 @@
             <Button Width="60" Margin="5 5 5 5" Background="White">
                 <Image Source="resource/paste.png" Stretch="Uniform"/>
             </Button>
+            <Button Width="60" Margin="5 5 5 5" Background="White">
+                <Image Source="resource/broom.png" Stretch="Uniform"/>
+            </Button>
         </StackPanel>
 
         <TextBox Grid.Row="2" Margin="20, 10, 20, 10" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"></TextBox>
