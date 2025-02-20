@@ -54,7 +54,7 @@
             </Button>
         </StackPanel>
 
-        <TextBox Grid.Row="2" Margin="20, 10, 20, 10"></TextBox>
+        <TextBox Grid.Row="2" Margin="20, 10, 20, 10" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"></TextBox>
         <Border Grid.Row="3" BorderBrush="Gray" BorderThickness="1" Margin="20, 10, 20, 10">
             <TextBlock Background="White"></TextBlock>
         </Border>
