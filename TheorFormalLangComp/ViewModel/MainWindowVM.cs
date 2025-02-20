@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using TheorFormalLangComp.Files;
 
 namespace TheorFormalLangComp.ViewModel
@@ -29,6 +30,7 @@ namespace TheorFormalLangComp.ViewModel
         public Action<string> PathChanged;
         public MainWindowVM()
         {
+            _fileSaved = true;
             _fileWorker = new();
             PathChanged += _fileWorker.OnPathChanged;
         }
@@ -71,21 +73,50 @@ namespace TheorFormalLangComp.ViewModel
             else { return false; }
         }
 
-        private void Open(object sender, EventArgs e)
+        private bool TryConfirmClose() // Изменить название
         {
-            if (TryOpen() == false) return;
+            while (_fileSaved == false)
+            {
+                MessageBoxResult result = MessageBox.Show(
+                "У вас есть несохраненные изменения. Хотите сохранить файл перед выходом?",
+                "Подтверждение",
+                MessageBoxButton.YesNoCancel,
+                MessageBoxImage.Question);
 
-            TextInput = _fileWorker.GetData();
-            _fileSaved = true;
+                if (result == MessageBoxResult.Yes)
+                {
+                    Save();
+                    return true;
+                }
+                else if (result == MessageBoxResult.Cancel)
+                {
+                    return false;
+                }
+                else if (result == MessageBoxResult.No)
+                {
+                    return true;
+                }
+            }
+            return true;
+        }
+
+        private void Open()
+        {
+            if (TryConfirmClose()) 
+            {
+                if (TryOpen() == false) return;
+                TextInput = _fileWorker.GetData();
+                _fileSaved = true;
+            }
         }
 
         private void Create()
         {
-            if(_fileSaved == false)
+            if (TryConfirmClose())
             {
-                
+                TextInput = "";
+                _fileSaved = true;
             }
-            TextInput = "";
         }
 
         private void Save()
@@ -101,6 +132,50 @@ namespace TheorFormalLangComp.ViewModel
             if (TryChoosePath() == false) return;
             _fileWorker.Save(TextInput);
             _fileSaved = true;
+        }
+
+        public ICommand CreateCommand
+        {
+            get
+            {
+                return new DelegateCommand(() =>
+                {
+                    Create();
+                });
+            }
+        }
+
+        public ICommand OpenCommand
+        {
+            get
+            {
+                return new DelegateCommand(() =>
+                {
+                    Open();
+                });
+            }
+        }
+
+        public ICommand SaveCommand
+        {
+            get
+            {
+                return new DelegateCommand(() =>
+                {
+                    Save();
+                });
+            }
+        }
+
+        public ICommand SaveAsCommand
+        {
+            get
+            {
+                return new DelegateCommand(() =>
+                {
+                    SaveAs();
+                });
+            }
         }
     }
 }

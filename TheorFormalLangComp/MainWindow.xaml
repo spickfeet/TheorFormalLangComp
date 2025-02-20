@@ -16,10 +16,10 @@
         
         <Menu Height="25" VerticalAlignment="Top">
             <MenuItem Header="Файл">
-                <MenuItem Header="Создать"></MenuItem>
-                <MenuItem Header="Открыть"></MenuItem>
-                <MenuItem Header="Сохранить"></MenuItem>
-                <MenuItem Header="Сохранить как"></MenuItem>
+                <MenuItem Header="Создать" Command="{Binding CreateCommand}"></MenuItem>
+                <MenuItem Header="Открыть" Command="{Binding OpenCommand}"></MenuItem>
+                <MenuItem Header="Сохранить" Command="{Binding SaveCommand}"></MenuItem>
+                <MenuItem Header="Сохранить как" Command="{Binding SaveAsCommand}"></MenuItem>
                 <MenuItem Header="Выход"></MenuItem>
             </MenuItem>
             <MenuItem Header="Правка">
@@ -41,13 +41,13 @@
         </Menu>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="20 0 0 0">
-            <Button Width="60" Margin="5 5 5 5" Background="White">
+            <Button Width="60" Margin="5 5 5 5" Background="White" Command="{Binding CreateCommand}">
                 <Image Source="resource/paper.png" Stretch="Uniform"/>
             </Button>
-            <Button Width="60" Margin="5 5 5 5" Background="White">
+            <Button Width="60" Margin="5 5 5 5" Background="White" Command="{Binding OpenCommand}">
                 <Image Source="resource/folder.png" Stretch="Uniform"/>
             </Button>
-            <Button Width="60" Margin="5 5 5 5" Background="White">
+            <Button Width="60" Margin="5 5 5 5" Background="White" Command="{Binding SaveCommand}">
                 <Image Source="resource/save.png" Stretch="Uniform"/>
             </Button>
             <Button Width="60" Margin="40 5 5 5" Background="White">
@@ -70,7 +70,7 @@
             </Button>
         </StackPanel>
 
-        <TextBox Grid.Row="2" Margin="20, 10, 20, 10" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"></TextBox>
+        <TextBox Grid.Row="2" Margin="20, 10, 20, 10" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Text="{Binding TextInput,UpdateSourceTrigger=PropertyChanged}"></TextBox>
         <Border Grid.Row="3" BorderBrush="Gray" BorderThickness="1" Margin="20, 10, 20, 10">
             <TextBlock Background="White"></TextBlock>
         </Border>
