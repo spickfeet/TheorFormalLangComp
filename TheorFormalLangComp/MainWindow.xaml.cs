@@ -42,5 +42,24 @@ namespace TheorFormalLangComp
         {
             textBox1.Redo();
         }
+
+        private void Copy(object sender, RoutedEventArgs e)
+        {
+            textBox1.Copy();
+        }
+
+        private void Cut(object sender, RoutedEventArgs e)
+        {
+            textBox1.Cut();
+        }
+
+        private void Paste(object sender, RoutedEventArgs e)
+        {
+            textBox1.Paste();
+        }
+        private void Clear(object sender, RoutedEventArgs e)
+        {
+            textBox1.Clear();
+        }
     }
 }

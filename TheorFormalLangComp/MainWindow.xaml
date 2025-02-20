@@ -57,16 +57,16 @@
             <Button Width="60" Margin="5 5 5 5" Background="White" Click="Redo">
                 <Image Source="resource/right-arrow.png" Stretch="Uniform"/>
             </Button>
-            <Button Width="60" Margin="5 5 5 5" Background="White">
+            <Button Width="60" Margin="5 5 5 5" Background="White" Click="Copy">
                 <Image Source="resource/copy.png" Stretch="Uniform"/>
             </Button>
-            <Button Width="60" Margin="5 5 5 5" Background="White">
+            <Button Width="60" Margin="5 5 5 5" Background="White" Click="Cut">
                 <Image Source="resource/scissors.png" Stretch="Uniform"/>
             </Button>
-            <Button Width="60" Margin="5 5 5 5" Background="White">
+            <Button Width="60" Margin="5 5 5 5" Background="White" Click="Paste">
                 <Image Source="resource/paste.png" Stretch="Uniform"/>
             </Button>
-            <Button Width="60" Margin="5 5 5 5" Background="White">
+            <Button Width="60" Margin="5 5 5 5" Background="White" Click="Clear">
                 <Image Source="resource/broom.png" Stretch="Uniform"/>
             </Button>
         </StackPanel>
