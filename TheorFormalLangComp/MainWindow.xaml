@@ -7,6 +7,31 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Menu Height="25" VerticalAlignment="Top">
+            <MenuItem Header="Файл">
+            </MenuItem>
+            <MenuItem Header="Правка">
+            </MenuItem>
+            <MenuItem Header="Текст">
+            </MenuItem>
+            <MenuItem Header="Пуск">
+            </MenuItem>
+            <MenuItem Header="Справка">
+            </MenuItem>
+        </Menu>
 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <
+            </Grid.ColumnDefinitions>
+        </Grid>
+        
     </Grid>
 </Window>
