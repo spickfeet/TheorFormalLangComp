@@ -115,6 +115,7 @@ namespace TheorFormalLangComp.ViewModel
             if (TrySave())
             {
                 TextInput = "";
+                _fileWorker.OnPathChanged(null);
                 _fileSaved = true;
             }
         }
