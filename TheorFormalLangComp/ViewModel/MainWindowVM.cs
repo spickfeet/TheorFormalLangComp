@@ -73,7 +73,7 @@ namespace TheorFormalLangComp.ViewModel
             else { return false; }
         }
 
-        public bool TrySave() // Изменить название
+        public void PromptSave() // Изменить название
         {
             while (_fileSaved == false)
             {
@@ -86,38 +86,30 @@ namespace TheorFormalLangComp.ViewModel
                 if (result == MessageBoxResult.Yes)
                 {
                     Save();
-                    return true;
-                }
-                else if (result == MessageBoxResult.Cancel)
-                {
-                    return false;
                 }
                 else if (result == MessageBoxResult.No)
                 {
-                    return true;
+                    return;
                 }
             }
-            return true;
         }
 
         private void Open()
         {
-            if (TrySave()) 
-            {
-                if (TryOpen() == false) return;
-                TextInput = _fileWorker.GetData();
-                _fileSaved = true;
-            }
+            PromptSave();
+            if (TryOpen() == false) return;
+            TextInput = _fileWorker.GetData();
+            _fileSaved = true;
+
         }
 
         private void Create()
         {
-            if (TrySave())
-            {
-                TextInput = "";
-                _fileWorker.OnPathChanged(null);
-                _fileSaved = true;
-            }
+            PromptSave();
+             TextInput = "";
+            _fileWorker.OnPathChanged(null);
+            _fileSaved = true;
+
         }
 
         private void Save()
