@@ -29,4 +29,10 @@
     <Resource Include="resource\broom.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="resource\Справка\new_project.chm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

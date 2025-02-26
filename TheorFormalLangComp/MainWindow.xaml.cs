@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Reflection.Metadata;
 using System.Runtime.Intrinsics.X86;
 using System.Text;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Shell;
 using TheorFormalLangComp.ViewModel;
 
 namespace TheorFormalLangComp
@@ -68,18 +70,14 @@ namespace TheorFormalLangComp
 
         private void Help(object sender, RoutedEventArgs e)
         {
-            /*OpenFileDialog openListGroup = new OpenFileDialog();
-            openListGroup.InitialDirectory = "resource/Справка/new_project.chm";
-            openListGroup.ShowDialog();
-            */
             var p = new Process();
-            p.StartInfo = new ProcessStartInfo(@"new_project.chm")
+            string currentDirectory = Directory.GetCurrentDirectory();
+            string fullPath = System.IO.Path.Combine(currentDirectory, "resource", "Справка", "new_project.chm");
+            p.StartInfo = new ProcessStartInfo(fullPath)
             {
                 UseShellExecute = true
             };
             p.Start();
-
-
         }
     }
 }
