@@ -1,4 +1,8 @@
-﻿using System.ComponentModel;
+﻿using Microsoft.Win32;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Reflection.Metadata;
+using System.Runtime.Intrinsics.X86;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -60,6 +64,22 @@ namespace TheorFormalLangComp
         private void Clear(object sender, RoutedEventArgs e)
         {
             textBox1.Clear();
+        }
+
+        private void Help(object sender, RoutedEventArgs e)
+        {
+            /*OpenFileDialog openListGroup = new OpenFileDialog();
+            openListGroup.InitialDirectory = "resource/Справка/new_project.chm";
+            openListGroup.ShowDialog();
+            */
+            var p = new Process();
+            p.StartInfo = new ProcessStartInfo(@"new_project.chm")
+            {
+                UseShellExecute = true
+            };
+            p.Start();
+
+
         }
     }
 }

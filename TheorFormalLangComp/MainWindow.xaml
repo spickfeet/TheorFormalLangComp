@@ -42,7 +42,7 @@
             <MenuItem Header="Пуск">
             </MenuItem>
             <MenuItem Header="Справка">
-                <MenuItem Header="Вызов справки"></MenuItem>
+                <MenuItem Header="Вызов справки" Click="Help"></MenuItem>
                 <MenuItem Header="О программе"></MenuItem>
             </MenuItem>
         </Menu>
