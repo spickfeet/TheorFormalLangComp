@@ -72,8 +72,8 @@ namespace TheorFormalLangComp.State
                     _currentLine++;
                 }
             }
-            CurrentIndex--;
-            State.Enter(this);
+            if(State is End)
+                State.Enter(this);
             return _lines;
         }
     }

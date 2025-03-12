@@ -66,6 +66,7 @@ namespace TheorFormalLangComp
         private void Clear(object sender, RoutedEventArgs e)
         {
             textBox1.Clear();
+            textBox2.Clear();
         }
 
         private void Help(object sender, RoutedEventArgs e)
