@@ -8,11 +8,16 @@ namespace TheorFormalLangComp.State
 {
     public class DomainPart : IMailFinderState
     {
-        private string forbiddenChars = " ()<>[]:;@\\,\"\t\n\r";
+        private string forbiddenChars = " -!@#$%^&*()=+{}[]|\\:;\"'<>,?/\t\n\r";
         public void Enter(MailFinder mailFinder)
         {
-            if (mailFinder.Text[mailFinder.CurrentIndex] == '.' && mailFinder.CurrentIndex > mailFinder.CurrentDomainStartIndex) 
+            if (mailFinder.Text[mailFinder.CurrentIndex] == '.') 
             {
+                if(mailFinder.CurrentIndex == mailFinder.CurrentDomainStartIndex)
+                {
+                    mailFinder.State = new FirstEnter();
+                    return;
+                }
                 mailFinder.CurrentDomainStartIndex = mailFinder.CurrentIndex + 1;
                 mailFinder.State = new NextDomain();
             }

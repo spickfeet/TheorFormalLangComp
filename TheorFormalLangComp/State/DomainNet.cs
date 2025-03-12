@@ -8,7 +8,7 @@ namespace TheorFormalLangComp.State
 {
     internal class DomainNet : IMailFinderState
     {
-        private string forbiddenChars = " .-!@#$%^&*()=+{}[]|\\:;\"'<>,?/";
+        private string forbiddenChars = " .-!@#$%^&*()=+{}[]|\\:;\"'<>,?/\t\n\r";
         private int _countEnter = 0;
         public void Enter(MailFinder mailFinder)
         {

@@ -8,7 +8,7 @@ namespace TheorFormalLangComp.State
 {
     internal class DomainRu : IMailFinderState
     {
-        private string forbiddenChars = " .-!@#$%^&*()=+{}[]|\\:;\"'<>,?/";
+        private string forbiddenChars = " .-!@#$%^&*()=+{}[]|\\:;\"'<>,?/\t\n\r";
         public void Enter(MailFinder mailFinder)
         {
             if (mailFinder.Text[mailFinder.CurrentIndex] == 'u' && 
