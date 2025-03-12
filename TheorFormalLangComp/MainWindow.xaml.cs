@@ -35,7 +35,7 @@ namespace TheorFormalLangComp
         {
             if (DataContext is MainWindowVM vm)
             {
-                vm.TrySave();
+                vm.PromptSave();
             }
         }
 

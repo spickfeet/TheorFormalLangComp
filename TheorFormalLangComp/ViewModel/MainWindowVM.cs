@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using TheorFormalLangComp.Files;
+using TheorFormalLangComp.State;
 
 namespace TheorFormalLangComp.ViewModel
 {
@@ -15,6 +16,7 @@ namespace TheorFormalLangComp.ViewModel
     {
         private FileWorker _fileWorker;
         private string _textInput;
+        private string _debugText;
 
         private bool _fileSaved;
         public string TextInput
@@ -24,6 +26,15 @@ namespace TheorFormalLangComp.ViewModel
             {
                 Set(ref _textInput, value);
                 _fileSaved = false;
+            }
+        }
+        
+        public string DebugText
+        {
+            get { return _debugText; }
+            set
+            {
+                Set(ref _debugText, value);
             }
         }
 
@@ -167,6 +178,22 @@ namespace TheorFormalLangComp.ViewModel
                 return new DelegateCommand(() =>
                 {
                     SaveAs();
+                });
+            }
+        }
+        public ICommand Start
+        {
+            get
+            {
+                return new DelegateCommand(() =>
+                {
+                    MailFinder mailFinder = new MailFinder();
+                    string formattedText = TextInput.Replace("\r", "");
+                    List<MailPosition> mailPositions = mailFinder.Find(formattedText);
+                    foreach (MailPosition mailPosition in mailPositions)
+                    {
+                        DebugText += $"Найдена почта. <<{formattedText.Substring(mailPosition.globalStartIndex, mailPosition.endIndex - mailPosition.startIndex)}>>\n Строка: {mailPosition.line}\n Индекс начала: {mailPosition.startIndex}\nИндекс конца: {mailPosition.endIndex}\n\n\n";
+                    }
                 });
             }
         }
