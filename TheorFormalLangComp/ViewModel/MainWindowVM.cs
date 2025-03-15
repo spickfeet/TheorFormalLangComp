@@ -192,7 +192,7 @@ namespace TheorFormalLangComp.ViewModel
                     List<MailPosition> mailPositions = mailFinder.Find(formattedText);
                     foreach (MailPosition mailPosition in mailPositions)
                     {
-                        DebugText += $"Найдена почта. <<{formattedText.Substring(mailPosition.globalStartIndex, mailPosition.endIndex - mailPosition.startIndex)}>>\nСтрока: {mailPosition.line}\nИндекс начала: {mailPosition.startIndex}\nИндекс конца: {mailPosition.endIndex}\n\n\n";
+                        DebugText += $"Найдена почта. <<{formattedText.Substring(mailPosition.globalStartIndex, mailPosition.endIndex + 1 - mailPosition.startIndex)}>>\nСтрока: {mailPosition.line}\nИндекс начала: {mailPosition.startIndex}\nИндекс конца: {mailPosition.endIndex}\n\n\n";
                     }
                 });
             }

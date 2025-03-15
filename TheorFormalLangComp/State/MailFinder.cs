@@ -54,9 +54,9 @@ namespace TheorFormalLangComp.State
         {
             string[] lines = Text.Split('\n');
             int startLineIndex = 0;
-            for(int i = 0; i < - 1;i++)
+            for(int i = 0; i < _currentLine- 1;i++)
             {
-                startLineIndex += lines.Length;
+                startLineIndex += lines[i].Length + 1;
             }
            
             _lines.Add(new MailPosition(_currentLine, StartIndex - startLineIndex, CurrentIndex - startLineIndex, StartIndex,CurrentIndex));
@@ -73,7 +73,11 @@ namespace TheorFormalLangComp.State
                 }
             }
             if(State is End)
+            {
+                CurrentIndex -= 1;
                 State.Enter(this);
+            }
+                
             return _lines;
         }
     }
