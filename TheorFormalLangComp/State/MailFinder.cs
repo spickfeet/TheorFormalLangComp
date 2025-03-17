@@ -10,18 +10,16 @@ namespace TheorFormalLangComp.State
 {
     public struct MailPosition
     {
-        public int globalStartIndex;
-        public int globalEndIndex;
         public int line;
         public int startIndex;
         public int endIndex;
-        public MailPosition(int line, int startIndex, int endIndex,int globalStartIndex, int globalEndIndex)
+        public string mail;
+        public MailPosition(int line, int startIndex, int endIndex, string mail)
         {
             this.line = line;
             this.startIndex = startIndex;
             this.endIndex = endIndex;
-            this.globalStartIndex = globalStartIndex;
-            this.globalEndIndex = globalEndIndex;
+            this.mail = mail;
         }
     }
     public class MailFinder
@@ -54,12 +52,12 @@ namespace TheorFormalLangComp.State
         {
             string[] lines = Text.Split('\n');
             int startLineIndex = 0;
-            for(int i = 0; i < _currentLine- 1;i++)
+            for(int i = 0; i < _currentLine - 1;i++)
             {
                 startLineIndex += lines[i].Length + 1;
             }
            
-            _lines.Add(new MailPosition(_currentLine, StartIndex - startLineIndex, CurrentIndex - startLineIndex, StartIndex,CurrentIndex));
+            _lines.Add(new MailPosition(_currentLine, StartIndex - startLineIndex, CurrentIndex - 1 - startLineIndex, Text.Substring(StartIndex,CurrentIndex - StartIndex)));
         }
         public List<MailPosition> Find(string text)
         {
@@ -74,7 +72,6 @@ namespace TheorFormalLangComp.State
             }
             if(State is End)
             {
-                CurrentIndex -= 1;
                 State.Enter(this);
             }
                 
