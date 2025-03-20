@@ -59,6 +59,9 @@
     <None Update="resource\Справка\Открыть.htm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="resource\Справка\Регулярные выражения.htm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="resource\Справка\Создать.htm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
