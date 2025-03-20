@@ -17,5 +17,14 @@
 			<param name="Local" value="‘айл, справка.htm">
 			</OBJECT>
 	</UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="&Dstrok;&aring;&atilde;&oacute;&euml;&yuml;&eth;&iacute;&ucirc;&aring; &acirc;&ucirc;&eth;&agrave;&aelig;&aring;&iacute;&egrave;&yuml;">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="&Dstrok;&aring;&atilde;&oacute;&euml;&yuml;&eth;&iacute;&ucirc;&aring; &acirc;&ucirc;&eth;&agrave;&aelig;&aring;&iacute;&egrave;&yuml;">
+			<param name="Local" value="–егул€рные выражени€.htm">
+			</OBJECT>
+	</UL>
 </UL>
 </BODY></HTML>

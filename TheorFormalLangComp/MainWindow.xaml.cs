@@ -80,5 +80,21 @@ namespace TheorFormalLangComp
             };
             p.Start();
         }
+
+        private void RegularFormule(object sender, RoutedEventArgs e)
+        {
+            RegularWindow window = new(1);
+            window.ShowDialog();
+        }
+        private void RegularLanguage(object sender, RoutedEventArgs e)
+        {
+            RegularWindow window = new(2);
+            window.ShowDialog();
+        }
+        private void RegularExample(object sender, RoutedEventArgs e)
+        {
+            RegularWindow window = new(3);
+            window.ShowDialog();
+        }
     }
 }

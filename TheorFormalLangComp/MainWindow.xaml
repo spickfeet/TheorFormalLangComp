@@ -38,6 +38,11 @@
                 <MenuItem Header="Удалить всё" Click="Clear"></MenuItem>
             </MenuItem>
             <MenuItem Header="Текст">
+                <MenuItem Header="Регулярные выражения">
+                    <MenuItem Header="Формула" Click="RegularFormule"></MenuItem>
+                    <MenuItem Header="Язык" Click="RegularLanguage"></MenuItem>
+                    <MenuItem Header="Тестовый пример" Click="RegularExample"></MenuItem>
+                </MenuItem>
             </MenuItem>
             <MenuItem Header="Пуск">
             </MenuItem>
