@@ -40,11 +40,13 @@ namespace TheorFormalLangComp.State
         public int DomainStartIndex {  get; set; }
         public int CurrentDomainStartIndex { get; set; }
         private List<MailPosition> _lines;
+        public List<IMailFinderState> MailFinderStates { get; set; }
 
         public MailFinder()
         {
             _currentLine = 1;
             _lines = new List<MailPosition>();
+            MailFinderStates = new();
             State = new FirstEnter();
         }
 
@@ -61,10 +63,12 @@ namespace TheorFormalLangComp.State
         }
         public List<MailPosition> Find(string text)
         {
+            MailFinderStates.Add(State);
             Text = text;
             for (; CurrentIndex < text.Length; CurrentIndex++)
             {
                 State.Enter(this);
+                MailFinderStates.Add(State);
                 if (text[CurrentIndex] == '\n')
                 {
                     _currentLine++;

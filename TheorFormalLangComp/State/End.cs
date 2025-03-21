@@ -8,6 +8,13 @@ namespace TheorFormalLangComp.State
 {
     internal class End : IMailFinderState
     {
+        public string GermanNameState
+        {
+            get
+            {
+                return "END";
+            }
+        }
         public void Enter(MailFinder mailFinder)
         {
             mailFinder.SavePos();

@@ -9,6 +9,7 @@ namespace TheorFormalLangComp.State
     public class DomainPart : IMailFinderState
     {
         private string forbiddenChars = " -!@#$%^&*()=+{}[]|\\:;\"'<>,?/\t\n\r";
+        public string GermanNameState => "DP";
         public void Enter(MailFinder mailFinder)
         {
             if (mailFinder.Text[mailFinder.CurrentIndex] == '.') 

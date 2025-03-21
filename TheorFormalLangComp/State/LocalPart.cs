@@ -9,6 +9,7 @@ namespace TheorFormalLangComp.State
     public class LocalPart : IMailFinderState
     {
         private string forbiddenChars = " +-!№#$%^&?*()<>[]:;@\\,\"\t\n\r";
+        public string GermanNameState => "LP";
         public void Enter(MailFinder mailFinder)
         {
             if (mailFinder.Text[mailFinder.CurrentIndex] == '@')
