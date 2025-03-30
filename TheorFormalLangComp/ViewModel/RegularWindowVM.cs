@@ -28,6 +28,9 @@ namespace TheorFormalLangComp.ViewModel
                 case 3:
                     RegularText = reg.Example;
                     break;
+                case 4:
+                    RegularText = reg.StateMachine;
+                    break;
             }
         }
 

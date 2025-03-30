@@ -43,6 +43,7 @@
                     <MenuItem Header="Язык" Click="RegularLanguage"></MenuItem>
                     <MenuItem Header="Тестовый пример" Click="RegularExample"></MenuItem>
                 </MenuItem>
+                <MenuItem Header="Конечные автоматы" Click="StateMachine"></MenuItem>
             </MenuItem>
             <MenuItem Header="Пуск">
             </MenuItem>

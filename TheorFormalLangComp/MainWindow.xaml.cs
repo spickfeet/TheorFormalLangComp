@@ -96,5 +96,11 @@ namespace TheorFormalLangComp
             RegularWindow window = new(3);
             window.ShowDialog();
         }
+
+        private void StateMachine(object sender, RoutedEventArgs e)
+        {
+            RegularWindow window = new(4);
+            window.ShowDialog();
+        }
     }
 }
