@@ -10,7 +10,7 @@ namespace TheorFormalLangComp.State
     {
         private string forbiddenChars = " .-!@#$%^&*()=+{}[]|\\:;\"'<>,?/\t\n\r";
         private int _countEnter = 0;
-        public string GermanNameState
+        public string GetNameState
         {
             get
             {

@@ -198,7 +198,7 @@ namespace TheorFormalLangComp.ViewModel
                     DebugText += "История переходов:\n" ;
                     foreach (IMailFinderState mailPosition in mailFinder.MailFinderStates)
                     {
-                        DebugText += mailPosition.GermanNameState + "---";
+                        DebugText += mailPosition.GetNameState + "---";
                     }
                 });
             }

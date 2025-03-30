@@ -8,7 +8,7 @@ namespace TheorFormalLangComp.State
 {
     internal class End : IMailFinderState
     {
-        public string GermanNameState
+        public string GetNameState
         {
             get
             {
