@@ -8,6 +8,6 @@
         Title="RegularWindow" Height="250" Width="600"
         WindowStartupLocation="CenterScreen">
     <Grid>
-        <TextBox Text="{Binding RegularText}" IsReadOnly="True"></TextBox>
+        <TextBox Text="{Binding RegularText}" TextWrapping="Wrap" IsReadOnly="True"></TextBox>
     </Grid>
 </Window>
