@@ -9,7 +9,7 @@ namespace TheorFormalLangComp.State
     internal class DomainRu : IMailFinderState
     {
         private string forbiddenChars = " .-!@#$%^&*()=+{}[]|\\:;\"'<>,?/\t\n\r";
-        public string GermanNameState
+        public string GetNameState
         {
             get
             {

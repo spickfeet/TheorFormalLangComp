@@ -9,7 +9,7 @@ namespace TheorFormalLangComp.State
     public class FirstEnter : IMailFinderState
     {
         private string forbiddenChars = " .-!@#$%^&*()=+{}[]|\\:;\"'<>,?/";
-        public string GermanNameState => "FE";
+        public string GetNameState => "FE";
         public void Enter(MailFinder mailFinder)
         {
             if (forbiddenChars.Contains(mailFinder.Text[mailFinder.CurrentIndex])) return;
