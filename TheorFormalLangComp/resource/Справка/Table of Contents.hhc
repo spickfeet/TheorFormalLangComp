@@ -26,5 +26,14 @@
 			<param name="Local" value="Регулярные выражения.htm">
 			</OBJECT>
 	</UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="&Ecirc;&icirc;&iacute;&aring;&divide;&iacute;&ucirc;&aring; &agrave;&acirc;&ograve;&icirc;&igrave;&agrave;&ograve;&ucirc;">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="&Ecirc;&icirc;&iacute;&aring;&divide;&iacute;&ucirc;&aring; &agrave;&acirc;&ograve;&icirc;&igrave;&agrave;&ograve;&ucirc;">
+			<param name="Local" value="Конечные автоматы.htm">
+			</OBJECT>
+	</UL>
 </UL>
 </BODY></HTML>

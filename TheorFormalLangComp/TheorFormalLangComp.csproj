@@ -44,6 +44,12 @@
     <None Update="resource\Справка\Intro3.htm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="resource\Справка\Log1.log">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="resource\Справка\machine.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="resource\Справка\new_project.chm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -54,6 +60,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="resource\Справка\Table of Contents.hhc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="resource\Справка\table.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="resource\Справка\Конечные автоматы.htm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="resource\Справка\Открыть.htm">
