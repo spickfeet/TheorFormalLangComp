@@ -9,5 +9,6 @@ namespace TheorFormalLangComp.State
     public interface IMailFinderState
     {
         void Enter(MailFinder mailFinder);
+        string GermanNameState { get; }
     }
 }

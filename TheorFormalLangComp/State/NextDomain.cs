@@ -9,6 +9,7 @@ namespace TheorFormalLangComp.State
     public class NextDomain : IMailFinderState
     {
         private string forbiddenChars = " ()<>[]:;@\\,\"\t\n\r";
+        public string GermanNameState => "ND";
         public void Enter(MailFinder mailFinder)
         {
             if (mailFinder.Text[mailFinder.CurrentIndex] == 'r')

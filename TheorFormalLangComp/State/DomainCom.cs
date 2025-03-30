@@ -10,6 +10,18 @@ namespace TheorFormalLangComp.State
     {
         private string forbiddenChars = " .-!@#$%^&*()=+{}[]|\\:;\"'<>,?/\t\n\r";
         private int _countEnter = 0;
+
+        public string GermanNameState 
+        { 
+            get
+            {
+                _countEnter--;
+                if (_countEnter == 0) return "CO";
+                if (_countEnter == -1) return "COM";
+                return "ERROR_COM";
+            }
+        }
+
         public void Enter(MailFinder mailFinder)
         {
             if (_countEnter == 0 && mailFinder.Text[mailFinder.CurrentIndex] == 'o')
