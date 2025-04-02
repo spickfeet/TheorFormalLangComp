@@ -8,7 +8,7 @@ namespace TheorFormalLangComp.State
 {
     public class FirstEnter : IMailFinderState
     {
-        private string forbiddenChars = " .-!@#$%^&*()=+{}[]|\\:;\"'<>,?/";
+        private string forbiddenChars = " .-!@#$%^&*()=+{}[]|\\:;\"'<>,?/\t\n\r";
         public string GetNameState => "FE";
         public void Enter(MailFinder mailFinder)
         {

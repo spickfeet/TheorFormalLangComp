@@ -8,7 +8,7 @@ namespace TheorFormalLangComp.State
 {
     public class NextDomain : IMailFinderState
     {
-        private string forbiddenChars = " ()<>[]:;@\\,\"\t\n\r";
+        private string forbiddenChars = " ()<>[]:;@\\,\"\t\n\r.";
         public string GetNameState => "ND";
         public void Enter(MailFinder mailFinder)
         {
@@ -25,6 +25,11 @@ namespace TheorFormalLangComp.State
             if (mailFinder.Text[mailFinder.CurrentIndex] == 'n')
             {
                 mailFinder.State = new DomainNet();
+                return;
+            }
+            if (forbiddenChars.Contains(mailFinder.Text[mailFinder.CurrentIndex]) || mailFinder.CurrentIndex - mailFinder.StartIndex > 64)
+            {
+                mailFinder.State = new FirstEnter();
                 return;
             }
             mailFinder.State = new DomainPart();
