@@ -27,7 +27,7 @@ namespace TheorFormalLangComp.State
                 mailFinder.State = new DomainNet();
                 return;
             }
-            if (forbiddenChars.Contains(mailFinder.Text[mailFinder.CurrentIndex]) || mailFinder.CurrentIndex - mailFinder.StartIndex > 64)
+            if (forbiddenChars.Contains(mailFinder.Text[mailFinder.CurrentIndex]) )//|| mailFinder.CurrentIndex - mailFinder.StartIndex > 64)
             {
                 mailFinder.State = new FirstEnter();
                 return;

@@ -74,6 +74,7 @@ namespace TheorFormalLangComp.State
                     _currentLine++;
                 }
             }
+
             if(State is End)
             {
                 State.Enter(this);
