@@ -99,8 +99,14 @@ namespace TheorFormalLangComp
 
         private void StateMachine(object sender, RoutedEventArgs e)
         {
-            RegularWindow window = new(4);
-            window.ShowDialog();
+            var p = new Process();
+            string currentDirectory = Directory.GetCurrentDirectory();
+            string fullPath = System.IO.Path.Combine(currentDirectory, "resource", "Справка", "Конечные автоматы.htm");
+            p.StartInfo = new ProcessStartInfo(fullPath)
+            {
+                UseShellExecute = true
+            };
+            p.Start();
         }
     }
 }
