@@ -35,5 +35,14 @@
 			<param name="Local" value="Конечные автоматы.htm">
 			</OBJECT>
 	</UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="&Ntilde;&ecirc;&agrave;&iacute;&aring;&eth;">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="&Ntilde;&ecirc;&agrave;&iacute;&aring;&eth;">
+			<param name="Local" value="Сканер.htm">
+			</OBJECT>
+	</UL>
 </UL>
 </BODY></HTML>
