@@ -108,5 +108,16 @@ namespace TheorFormalLangComp
             };
             p.Start();
         }
+        private void Scanner(object sender, RoutedEventArgs e)
+        {
+            var p = new Process();
+            string currentDirectory = Directory.GetCurrentDirectory();
+            string fullPath = System.IO.Path.Combine(currentDirectory, "resource", "Справка", "Сканер.htm");
+            p.StartInfo = new ProcessStartInfo(fullPath)
+            {
+                UseShellExecute = true
+            };
+            p.Start();
+        }
     }
 }
