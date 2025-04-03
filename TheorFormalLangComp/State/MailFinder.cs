@@ -63,12 +63,12 @@ namespace TheorFormalLangComp.State
         }
         public List<MailPosition> Find(string text)
         {
-            //MailFinderStates.Add(State);
+            MailFinderStates.Add(State);
             Text = text;
             for (; CurrentIndex < text.Length; CurrentIndex++)
             {
-                MailFinderStates.Add(State);
                 State.Enter(this);
+                MailFinderStates.Add(State);
                 if (text[CurrentIndex] == '\n')
                 {
                     _currentLine++;
@@ -77,7 +77,7 @@ namespace TheorFormalLangComp.State
 
             if(State is End)
             {
-                MailFinderStates.Add(State);
+                //MailFinderStates.Add(State);
                 State.Enter(this);
             }
                 
