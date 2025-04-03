@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using CWCompil.State;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -187,19 +188,26 @@ namespace TheorFormalLangComp.ViewModel
             {
                 return new DelegateCommand(() =>
                 {
-                    MailFinder mailFinder = new MailFinder();
-                    string formattedText = TextInput.Replace("\r", "");
-                    List<MailPosition> mailPositions = mailFinder.Find(formattedText);
+                    StateMachine stateMachine = new();
+                    stateMachine.Start(TextInput);
                     DebugText = "";
-                    foreach (MailPosition mailPosition in mailPositions)
+                    foreach (var item in stateMachine.TokensData)
                     {
-                        DebugText += $"Найдена почта. <<{mailPosition.mail}>>\nСтрока: {mailPosition.line}\nИндекс начала: {mailPosition.startIndex}\nИндекс конца: {mailPosition.endIndex}\n\n\n";
+                        DebugText += $"Токен: {item.Token}, Значение: {item.TokenValue}, Строка: {item.Line}, Индекс: {item.LocalIndex}\n";
                     }
-                    DebugText += "История переходов:\n" ;
-                    foreach (IMailFinderState mailPosition in mailFinder.MailFinderStates)
-                    {
-                        DebugText += mailPosition.GetNameState + "---";
-                    }
+                    //MailFinder mailFinder = new MailFinder();
+                    //string formattedText = TextInput.Replace("\r", "");
+                    //List<MailPosition> mailPositions = mailFinder.Find(formattedText);
+                    //DebugText = "";
+                    //foreach (MailPosition mailPosition in mailPositions)
+                    //{
+                    //    DebugText += $"Найдена почта. <<{mailPosition.mail}>>\nСтрока: {mailPosition.line}\nИндекс начала: {mailPosition.startIndex}\nИндекс конца: {mailPosition.endIndex}\n\n\n";
+                    //}
+                    //DebugText += "История переходов:\n" ;
+                    //foreach (IMailFinderState mailPosition in mailFinder.MailFinderStates)
+                    //{
+                    //    DebugText += mailPosition.GetNameState + "---";
+                    //}
                 });
             }
         }
