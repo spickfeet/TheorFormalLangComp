@@ -85,4 +85,9 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ReadLineState\" />
+    <Folder Include="Новая папка\" />
+  </ItemGroup>
+
 </Project>
