@@ -1,25 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace TheorFormalLangComp.State
 {
     internal class DomainNet : IMailFinderState
     {
         private string forbiddenChars = " .-!@#$%^&*()=+{}[]|\\:;\"'<>,?/\t\n\r";
         private int _countEnter = 0;
-        public string GetNameState
-        {
-            get
-            {
-                _countEnter--;
-                if (_countEnter == 0) return "NE";
-                if (_countEnter == -1) return "NET";
-                return "ERROR_NET";
-            }
-        }
         public void Enter(MailFinder mailFinder)
         {
             if (_countEnter == 0 && mailFinder.Text[mailFinder.CurrentIndex] == 'e')
@@ -35,6 +20,16 @@ namespace TheorFormalLangComp.State
             }
 
             mailFinder.State = new DomainPart();
+        }
+        public string GetNameState
+        {
+            get
+            {
+                _countEnter--;
+                if (_countEnter == 0) return "NE";
+                if (_countEnter == -1) return "NET";
+                return "ERROR_NET";
+            }
         }
     }
 }
