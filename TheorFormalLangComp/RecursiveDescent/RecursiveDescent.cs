@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TheorFormalLangComp.Tokens;
 
 namespace TheorFormalLangComp.RecursiveDescent
 {
     public class RecursiveDescent
     {
-        public List<> Tokens { get; set; }
+        public List<TokenData<TokenTypesMath>> Tokens { get; set; }
         public List<string> Errors { get; set; }
         public List<string> StateHist {  get; set; }
         public int Index { get; set; }
-        public RecursiveDescent(List<string> tokens) 
+        public RecursiveDescent(List<TokenData<TokenTypesMath>> tokens) 
         {
             Tokens = tokens;
             Errors = new List<string>();
@@ -40,11 +41,11 @@ namespace TheorFormalLangComp.RecursiveDescent
         }
         private void O()
         {
-            if (Tokens[Index] == "(")
+            if (Tokens[Index].Token == TokenTypesMath.OB)
             {
                 Index++;
                 E();
-                if (Index < Tokens.Count - 1  && Tokens[Index] != ")" || Index == Tokens.Count - 1)
+                if (Index < Tokens.Count - 1  && Tokens[Index].Token != TokenTypesMath.CB || Index == Tokens.Count - 1)
                 {
                     Errors.Add("Нет <)>");
                 }

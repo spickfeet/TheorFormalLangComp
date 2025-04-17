@@ -113,17 +113,17 @@ namespace CWCompil.State
 
                 //--------------------------------------------------------------------------------------------------------------------
             }
-            TokensData = TokenConverter.CreateTokens(text);
-            Line = 1;
-            CurrentTokenIndex = 0;
-            for (; IsStopped == false; CurrentTokenIndex++) 
-            {
-                State.Enter(this);
-                if (CurrentTokenIndex < Tokens.Count && Tokens[CurrentTokenIndex].Contains("\n"))
-                {
-                    Line += Tokens[CurrentTokenIndex].Count(x => x == '\n');
-                }
-            }
+            //TokensData = TokenConverter.CreateTokens(text);
+            //Line = 1;
+            //CurrentTokenIndex = 0;
+            //for (; IsStopped == false; CurrentTokenIndex++) 
+            //{
+            //    State.Enter(this);
+            //    if (CurrentTokenIndex < Tokens.Count && Tokens[CurrentTokenIndex].Contains("\n"))
+            //    {
+            //        Line += Tokens[CurrentTokenIndex].Count(x => x == '\n');
+            //    }
+            //}
         }
     }
 }
