@@ -9,7 +9,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using TheorFormalLangComp.Files;
+using TheorFormalLangComp.RecursiveDescent;
 using TheorFormalLangComp.State;
+using TheorFormalLangComp.Tokens;
 
 namespace TheorFormalLangComp.ViewModel
 {
@@ -188,6 +190,7 @@ namespace TheorFormalLangComp.ViewModel
             {
                 return new DelegateCommand(() =>
                 {
+                    List<TokenData<TokenTypesMath>> tokens = MathTokenBuilder.CreateTokens(TextInput);
                     StateMachine stateMachine = new();
                     stateMachine.Start(TextInput);
                     DebugText = "";
