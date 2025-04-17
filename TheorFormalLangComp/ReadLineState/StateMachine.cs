@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using TheorFormalLangComp.RecursiveDescent;
 using TheorFormalLangComp.Tokens;
 
 namespace CWCompil.State
@@ -13,7 +14,7 @@ namespace CWCompil.State
         public bool IsStopped {  get; set; }
         public IState State { get; set; }
         public List<string> Tokens { get; set; }
-        public List<TokenData> TokensData { get; set; }
+        public List<TokenData<TokenTypesMath>> TokensData { get; set; }
         public int CurrentTokenIndex { get; set; }
         public List<ErrorData> ErrorsData {  get; set; }
         public int CountDel { get; set; }
@@ -112,17 +113,17 @@ namespace CWCompil.State
 
                 //--------------------------------------------------------------------------------------------------------------------
             }
-            TokensData = TokenConverter.CreateTokens(text);
-            Line = 1;
-            CurrentTokenIndex = 0;
-            for (; IsStopped == false; CurrentTokenIndex++) 
-            {
-                State.Enter(this);
-                if (CurrentTokenIndex < Tokens.Count && Tokens[CurrentTokenIndex].Contains("\n"))
-                {
-                    Line += Tokens[CurrentTokenIndex].Count(x => x == '\n');
-                }
-            }
+            //TokensData = TokenConverter.CreateTokens(text);
+            //Line = 1;
+            //CurrentTokenIndex = 0;
+            //for (; IsStopped == false; CurrentTokenIndex++) 
+            //{
+            //    State.Enter(this);
+            //    if (CurrentTokenIndex < Tokens.Count && Tokens[CurrentTokenIndex].Contains("\n"))
+            //    {
+            //        Line += Tokens[CurrentTokenIndex].Count(x => x == '\n');
+            //    }
+            //}
         }
     }
 }
