@@ -12,7 +12,7 @@ namespace TheorFormalLangComp.RecursiveDescent
     {
         public static List<TokenData<TokenTypesMath>> CreateTokens(string text)
         {
-            Regex regex = new(@"\d+|((?!(ReadLine|Console))[^\.();])+|\.|\(|\)|;");
+            Regex regex = new(@"\d+|^[a-zA-Zа-яА-Я]+$|\*|\/|\+|\-|\(|\)|[\s\S]");
             List<TokenData<TokenTypesMath>> tokens = new();
             int tempLineNumber = 1;
             int tempLineOffset = 0;
