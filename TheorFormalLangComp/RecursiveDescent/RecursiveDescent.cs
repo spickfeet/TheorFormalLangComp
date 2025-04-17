@@ -26,41 +26,71 @@ namespace TheorFormalLangComp.RecursiveDescent
         }
         private void E()
         {
+            StateHist.Add("E");
             T();
             A();
         }
         private void T()
         {
+            StateHist.Add("T");
             O();
             B();
         }
         private void A()
         {
-            T();
-            A();
+            StateHist.Add("A");
+            if (Index < Tokens.Count && (Tokens[Index].Token == TokenTypesMath.Plus || Tokens[Index].Token == TokenTypesMath.Minus))
+            {
+                Index++;
+                T();
+                A();
+            }
         }
         private void O()
         {
+            StateHist.Add("O");
+            if (Index >= Tokens.Count)
+            {
+                StateHist.Add("ERROR");
+                Errors.Add($"Не хватает переменной или числа в конце\n");
+                return;
+            }
             if (Tokens[Index].Token == TokenTypesMath.OB)
             {
                 Index++;
                 E();
-                if (Index < Tokens.Count - 1  && Tokens[Index].Token != TokenTypesMath.CB || Index == Tokens.Count - 1)
+                if (Index >= Tokens.Count)
                 {
-                    Errors.Add("Нет <)>");
+                    StateHist.Add("ERROR");
+                    Errors.Add($"Строка: {Tokens[Index - 1].Line} Индекс: {Tokens[Index - 1].LocalIndex + Tokens[Index - 1].TokenValue.Length}. Не хватает ) в конце\n\n");
+                    return;
+                }
+                if (Tokens[Index].Token != TokenTypesMath.CB)
+                {
+                    StateHist.Add("ERROR");
+                    Errors.Add($"Строка: {Tokens[Index].Line} Индекс: {Tokens[Index].LocalIndex}. Ожидается <)> вместо {Tokens[Index].TokenValue}\n");
                 }
                 else
                 {
                     Index++;
                 }
             }
-
+            if (Index < Tokens.Count && (Tokens[Index].Token != TokenTypesMath.Num && Tokens[Index].Token != TokenTypesMath.Id))
+            {
+                StateHist.Add("ERROR");
+                Errors.Add($"Строка: {Tokens[Index].Line} Индекс: {Tokens[Index].LocalIndex}. <{Tokens[Index].TokenValue}> не является валидным\n");
+            }
             Index++;
         }
         private void B()
         {
-            O();
-            B();
+            StateHist.Add("B");
+            if (Index < Tokens.Count && (Tokens[Index].Token == TokenTypesMath.Multiply || Tokens[Index].Token == TokenTypesMath.Div))
+            {
+                Index++;
+                O();
+                B();
+            }
         }
     }
 }

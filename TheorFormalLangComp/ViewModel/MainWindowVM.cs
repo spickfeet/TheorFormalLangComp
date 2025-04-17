@@ -186,12 +186,22 @@ namespace TheorFormalLangComp.ViewModel
                 return new DelegateCommand(() =>
                 {
                     List<TokenData<TokenTypesMath>> tokens = MathTokenBuilder.CreateTokens(TextInput);
-                    StateMachine stateMachine = new();
-                    stateMachine.Start(TextInput);
-                    DebugText = "";
-                    foreach (var item in stateMachine.TokensData)
+                    RecursiveDescent.RecursiveDescent stateMachine = new(tokens);
+                    stateMachine.Start();
+                    DebugText = "Мини-ошибки, не нейтрализация:\n";
+                    if(stateMachine.Errors.Count == 0)
                     {
-                        DebugText += $"Токен: {item.Token}, Значение: {item.TokenValue}, Строка: {item.Line}, Индекс: {item.LocalIndex}\n";
+                        DebugText += "Ошибок нет\n\n";
+                    }
+                    foreach (var item in stateMachine.Errors)
+                    {
+                        DebugText += item;
+                    }
+
+                    DebugText += "Состояния\n";
+                    foreach (var item in stateMachine.StateHist)
+                    {
+                        DebugText += item + "--";
                     }
                     //MailFinder mailFinder = new MailFinder();
                     //string formattedText = TextInput.Replace("\r", "");
