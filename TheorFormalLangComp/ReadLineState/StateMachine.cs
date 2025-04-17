@@ -14,7 +14,7 @@ namespace CWCompil.State
         public bool IsStopped {  get; set; }
         public IState State { get; set; }
         public List<string> Tokens { get; set; }
-        public List<TokenData<TokenTypesMath>> TokensData { get; set; }
+        public List<TokenData<TokenEnum>> TokensData { get; set; }
         public int CurrentTokenIndex { get; set; }
         public List<ErrorData> ErrorsData {  get; set; }
         public int CountDel { get; set; }

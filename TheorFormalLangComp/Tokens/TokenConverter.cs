@@ -4,17 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using TheorFormalLangComp.RecursiveDescent;
 
 namespace TheorFormalLangComp.Tokens
 {
     public static class TokenConverter
     {
-        //public static List<TokenData> CreateTokens(string text)
-        //{
-        //    Regex regex = new(@"Console|ReadLine|\s|((?!(ReadLine|Console))[^\.();])+|\.|\(|\)|;");
-        //    List<TokenData> tokens = new();
-        //    int tempLineNumber = 1;
-        //    int tempLineOffset = 0;
+        public static List<TokenData<TokenEnum>> CreateTokens(string text)
+        {
+            Regex regex = new(@"Console|ReadLine|\s|((?!(ReadLine|Console))[^\.();])+|\.|\(|\)|;");
+            List<TokenData<TokenEnum>> tokens = new();
+            int tempLineNumber = 1;
+            int tempLineOffset = 0;
 
         //    MatchCollection matches = regex.Matches(text);
         //    if (matches.Count > 0)
