@@ -119,5 +119,29 @@ namespace TheorFormalLangComp
             };
             p.Start();
         }
+
+        private void RecursiveDescent(object sender, RoutedEventArgs e)
+        {
+            var p = new Process();
+            string currentDirectory = Directory.GetCurrentDirectory();
+            string fullPath = System.IO.Path.Combine(currentDirectory, "resource", "Справка", "Рекурсивный спуск.html");
+            p.StartInfo = new ProcessStartInfo(fullPath)
+            {
+                UseShellExecute = true
+            };
+            p.Start();
+        }
+        private void Language(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+        private void Classification(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+        private void TestExample(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

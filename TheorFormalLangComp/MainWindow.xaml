@@ -45,6 +45,8 @@
                 </MenuItem>
                 <MenuItem Header="Конечные автоматы" Click="StateMachine"></MenuItem>
                 <MenuItem Header="Сканер" Click="Scanner"></MenuItem>
+                <MenuItem Header="Рекурсивный спуск" Click="RecursiveDescent">
+                </MenuItem>
             </MenuItem>
             <MenuItem Header="Пуск">
             </MenuItem>
