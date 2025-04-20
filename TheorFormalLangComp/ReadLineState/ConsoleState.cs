@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TheorFormalLangComp.Tokens;
 
 namespace CWCompil.State
 {
@@ -10,19 +11,15 @@ namespace CWCompil.State
     {
         public void Enter(StateMachine sm)
         {
-            if (sm.CurrentTokenIndex >= sm.Tokens.Count)
+            if (sm.CurrentTokenIndex >= sm.TokensData.Count)
             {
                 ErrorNeutralizer(sm);
                 return;
             }
-            if (sm.Tokens[sm.CurrentTokenIndex] == ".")
+            if (sm.TokensData[sm.CurrentTokenIndex].Token == TokenEnum.Point)
             {
                 sm.State = new PointState();
                 sm.CountDel = 0;
-            }
-            else if (string.IsNullOrWhiteSpace(sm.Tokens[sm.CurrentTokenIndex]))
-            {
-                return;
             }
             else
             {
@@ -44,29 +41,32 @@ namespace CWCompil.State
                 }
                 else
                 {
-                    sm.ErrorsData.Add(new(sm.Line, sm.GetIndexOfCurrentToken() + (sm.CurrentTokenIndex < sm.Tokens.Count ? sm.Offsets[sm.CurrentTokenIndex] : 0), sm.CurrentTokenIndex < sm.Tokens.Count ? $"Ожидается \"{tokens[i]}\" перед \"{sm.Tokens[sm.CurrentTokenIndex]}\"" :
+                    sm.ErrorsData.Add(new(
+                        sm.TokensData[(sm.CurrentTokenIndex < sm.TokensData.Count) ? sm.CurrentTokenIndex : sm.CurrentTokenIndex - 1].Line,
+                        sm.TokensData[(sm.CurrentTokenIndex < sm.TokensData.Count) ? sm.CurrentTokenIndex : sm.CurrentTokenIndex - 1].LocalIndex,
+                        sm.CurrentTokenIndex < sm.TokensData.Count ? $"Ожидается \"{tokens[i]}\" перед \"{sm.TokensData[sm.CurrentTokenIndex].TokenValue}\"" :
                          $"В конце ожидается \"{tokens[i]}\""));
                 }
             }
         }
         private void ErrorNeutralizer(StateMachine sm)
         {
-            if (sm.CurrentTokenIndex >= sm.Tokens.Count)
+            if (sm.CurrentTokenIndex >= sm.TokensData.Count)
             {
                 string[] tokens = { ".", "ReadLine", "(", ")", ";" };
                 NeutralizerAddOrChangeError(sm, tokens);
                 sm.State = new StartState();
                 return;
             }
-            if (sm.Tokens[sm.CurrentTokenIndex] == "Console")
+            if (sm.TokensData[sm.CurrentTokenIndex].Token == TokenEnum.KeywordConsole)
             {
-                string[] tokens = {".", "ReadLine", "(", ")", ";" };
+                string[] tokens = { ".", "ReadLine", "(", ")", ";" };
                 NeutralizerAddOrChangeError(sm, tokens);
                 sm.State = new StartState();
                 sm.State.Enter(sm);
                 return;
             }
-            if (sm.Tokens[sm.CurrentTokenIndex] == "ReadLine")
+            if (sm.TokensData[sm.CurrentTokenIndex].Token == TokenEnum.KeywordReadLine)
             {
                 string[] tokens = { "." };
                 NeutralizerAddOrChangeError(sm, tokens);
@@ -74,7 +74,7 @@ namespace CWCompil.State
                 sm.State.Enter(sm);
                 return;
             }
-            if (sm.Tokens[sm.CurrentTokenIndex] == "(")
+            if (sm.TokensData[sm.CurrentTokenIndex].Token == TokenEnum.OpenBracket)
             {
                 string[] tokens = { ".", "ReadLine" };
                 NeutralizerAddOrChangeError(sm, tokens);
@@ -82,15 +82,15 @@ namespace CWCompil.State
                 sm.State.Enter(sm);
                 return;
             }
-            if (sm.Tokens[sm.CurrentTokenIndex] == ")")
+            if (sm.TokensData[sm.CurrentTokenIndex].Token == TokenEnum.CloseBracket)
             {
-                string[] tokens = { ".", "ReadLine", "("};
+                string[] tokens = { ".", "ReadLine", "(" };
                 NeutralizerAddOrChangeError(sm, tokens);
                 sm.State = new OpenBracketState();
                 sm.State.Enter(sm);
                 return;
             }
-            if (sm.Tokens[sm.CurrentTokenIndex] == ";")
+            if (sm.TokensData[sm.CurrentTokenIndex].Token == TokenEnum.EndLine)
             {
                 string[] tokens = { ".", "ReadLine", "(", ")" };
                 NeutralizerAddOrChangeError(sm, tokens);
@@ -98,7 +98,10 @@ namespace CWCompil.State
                 sm.State.Enter(sm);
                 return;
             }
-            sm.ErrorsData.Add(new(sm.Line, sm.GetIndexOfCurrentToken() + (sm.CurrentTokenIndex < sm.Tokens.Count ? sm.Offsets[sm.CurrentTokenIndex] : 0), $"\"{sm.Tokens[sm.CurrentTokenIndex]}\" не является ожидаемым. (Отбрасывается)"));
+            sm.ErrorsData.Add(new(
+                sm.TokensData[(sm.CurrentTokenIndex < sm.TokensData.Count) ? sm.CurrentTokenIndex : sm.CurrentTokenIndex - 1].Line,
+                sm.TokensData[(sm.CurrentTokenIndex < sm.TokensData.Count) ? sm.CurrentTokenIndex : sm.CurrentTokenIndex - 1].LocalIndex,
+                $"\"{sm.TokensData[sm.CurrentTokenIndex].TokenValue}\" не является ожидаемым. (Отбрасывается)"));
             sm.CountDel++;
         }
     }

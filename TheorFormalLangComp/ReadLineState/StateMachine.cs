@@ -13,31 +13,30 @@ namespace CWCompil.State
     {
         public bool IsStopped {  get; set; }
         public IState State { get; set; }
-        public List<string> Tokens { get; set; }
+        //public List<string> Tokens { get; set; }
         public List<TokenData<TokenEnum>> TokensData { get; set; }
         public int CurrentTokenIndex { get; set; }
         public List<ErrorData> ErrorsData {  get; set; }
         public int CountDel { get; set; }
-        public int Line {  get; set; }
-        public List<int> Offsets { get; set; }
+        //public int Line {  get; set; }
         private Dictionary<int, int> _offsetsByIndexDict;
-        public StateMachine()
+        public StateMachine(List<TokenData<TokenEnum>> tokensData)
         {
+            TokensData = tokensData;
             _offsetsByIndexDict = new();
-            Offsets = new();
             ErrorsData = new();
-            Tokens = new List<string>();
+            //Tokens = new List<string>();
             State = new StartState();
         }
-        public int GetIndexOfCurrentToken()
-        {
-            int index = 0;
-            for (int i = 0; i < CurrentTokenIndex; i++) 
-            {
-                index += Tokens[i].Length;
-            }
-            return index;
-        } 
+        //public int GetIndexOfCurrentToken()
+        //{
+        //    int index = 0;
+        //    for (int i = 0; i < CurrentTokenIndex; i++) 
+        //    {
+        //        index += Tokens[i].Length;
+        //    }
+        //    return index;
+        //} 
 
         public string DelNonValidSymbols(string text)
         {
@@ -74,56 +73,38 @@ namespace CWCompil.State
 
 
 
-        public void Start(string text)
+        public void Start()
         {
             CountDel = 0;
             CurrentTokenIndex = 0;
-            Tokens.Clear();
+            //Tokens.Clear();
             IsStopped = false;
             ErrorsData.Clear();
-            Line = 1;
+            //Line = 1;
             //-----------------------------Удаление некорректных символов-----------------------------
             //text = DelNonValidSymbols(text);
             //----------------------------------------------------------------------------------------
 
             //string pattern = @"Console|ReadLine|((?!(ReadLine|Console))[^\s\.();])+|\.|\(|\)|;|\s";
-            string pattern = @"Console|ReadLine|((?!(ReadLine|Console))[^\.();])+|\.|\(|\)|;";
-            Regex regex = new Regex(pattern);
-            MatchCollection matches = regex.Matches(text);
+            //string pattern = @"Console|ReadLine|((?!(ReadLine|Console))[^\.();])+|\.|\(|\)|;";
+            //Regex regex = new Regex(pattern);
+            //MatchCollection matches = regex.Matches(text);
             
-            for (int i = 0; i < matches.Count; i++)
-            {
-                Tokens.Add(matches[i].Value);
-
-                //-----------------------------Удаление некорректных символов-----------------------------
-
-                //CurrentTokenIndex++;
-                Offsets.Add(0);
-                //foreach (int kay in _offsetsByIndexDict.Keys) 
-                //{
-                //    if (GetIndexOfCurrentToken() < kay)
-                //    {
-                //        break;
-                //    }
-                //    else
-                //    {
-                //        Offsets[i] = _offsetsByIndexDict[kay];
-                //    }
-                //}
-
-                //--------------------------------------------------------------------------------------------------------------------
-            }
+            //for (int i = 0; i < matches.Count; i++)
+            //{
+            //    Tokens.Add(matches[i].Value);
+            //}
             //TokensData = TokenConverter.CreateTokens(text);
             //Line = 1;
-            //CurrentTokenIndex = 0;
-            //for (; IsStopped == false; CurrentTokenIndex++) 
-            //{
-            //    State.Enter(this);
-            //    if (CurrentTokenIndex < Tokens.Count && Tokens[CurrentTokenIndex].Contains("\n"))
-            //    {
-            //        Line += Tokens[CurrentTokenIndex].Count(x => x == '\n');
-            //    }
-            //}
+            CurrentTokenIndex = 0;
+            for (; IsStopped == false; CurrentTokenIndex++)
+            {
+                State.Enter(this);
+                //if (CurrentTokenIndex < Tokens.Count && Tokens[CurrentTokenIndex].Contains("\n"))
+                //{
+                //    Line += Tokens[CurrentTokenIndex].Count(x => x == '\n');
+                //}
+            }
         }
     }
 }

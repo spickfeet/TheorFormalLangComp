@@ -9,12 +9,12 @@ namespace CWCompil.State
     public class ErrorData
     {
         public int Line { get; set; }
-        public int GlobalIndex { get; set; }
+        public int Index { get; set; }
         public string Text { get; set; }
-        public ErrorData(int line, int globalIndex, string text) 
+        public ErrorData(int line, int index, string text) 
         {
             Line = line;
-            GlobalIndex = globalIndex;
+            Index = index;
             Text = text;
         }
 

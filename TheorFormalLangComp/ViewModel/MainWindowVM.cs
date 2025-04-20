@@ -189,7 +189,7 @@ namespace TheorFormalLangComp.ViewModel
                     RecursiveDescent.RecursiveDescent stateMachine = new(tokens);
                     stateMachine.Start();
                     DebugText = "Мини-ошибки, не нейтрализация:\n";
-                    if(stateMachine.Errors.Count == 0)
+                    if (stateMachine.Errors.Count == 0)
                     {
                         DebugText += "Ошибок нет\n\n";
                     }
@@ -203,6 +203,22 @@ namespace TheorFormalLangComp.ViewModel
                     {
                         DebugText += item + "--";
                     }
+
+
+                    //List<TokenData<TokenEnum>> tokens = TokenConverter.CreateTokens(TextInput);
+                    //StateMachine stateMachine = new(tokens);
+                    //stateMachine.Start();
+                    //DebugText = "";
+                    //if (stateMachine.ErrorsData.Count == 0)
+                    //{
+                    //    DebugText = "Ошибок нет";
+                    //}
+                    //foreach (ErrorData errorData in stateMachine.ErrorsData)
+                    //{
+                    //    DebugText += $"Строка: {errorData.Line} Глобальный индекс: {errorData.Index} Ошибка {errorData.Text} \n";
+                    //}
+
+
                     //MailFinder mailFinder = new MailFinder();
                     //string formattedText = TextInput.Replace("\r", "");
                     //List<MailPosition> mailPositions = mailFinder.Find(formattedText);

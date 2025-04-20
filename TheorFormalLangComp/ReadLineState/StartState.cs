@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TheorFormalLangComp.Tokens;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace CWCompil.State
@@ -11,19 +12,15 @@ namespace CWCompil.State
     {
         public void Enter(StateMachine sm)
         {
-            if(sm.CurrentTokenIndex >= sm.Tokens.Count)
+            if(sm.CurrentTokenIndex >= sm.TokensData.Count)
             {
                 ErrorNeutralizer(sm);
                 return;
             }
-            if (sm.Tokens[sm.CurrentTokenIndex] == "Console")
+            if (sm.TokensData[sm.CurrentTokenIndex].Token == TokenEnum.KeywordConsole)
             {
                 sm.CountDel = 0;
                 sm.State = new ConsoleState();
-            }
-            else if (string.IsNullOrWhiteSpace(sm.Tokens[sm.CurrentTokenIndex]))
-            {
-                return;
             }
             else 
             {
@@ -45,18 +42,21 @@ namespace CWCompil.State
                 }
                 else
                 {
-                    sm.ErrorsData.Add(new(sm.Line, sm.GetIndexOfCurrentToken() + (sm.CurrentTokenIndex < sm.Tokens.Count ? sm.Offsets[sm.CurrentTokenIndex] : 0), $" Ожидается \"{tokens[i]}\" перед \"{sm.Tokens[sm.CurrentTokenIndex]}\""));
+                    sm.ErrorsData.Add(new(
+                            sm.TokensData[(sm.CurrentTokenIndex < sm.TokensData.Count) ? sm.CurrentTokenIndex : sm.CurrentTokenIndex - 1].Line,
+                            sm.TokensData[(sm.CurrentTokenIndex < sm.TokensData.Count) ? sm.CurrentTokenIndex : sm.CurrentTokenIndex - 1].LocalIndex, 
+                            $"Ожидается \"{tokens[i]}\" перед \"{sm.TokensData[sm.CurrentTokenIndex].TokenValue}\""));
                 }
             }
         }
         private void ErrorNeutralizer(StateMachine sm)
         {
-            if (sm.CurrentTokenIndex >= sm.Tokens.Count)
+            if (sm.CurrentTokenIndex >= sm.TokensData.Count)
             {
                 sm.IsStopped = true;
                 return;
             }
-            if (sm.Tokens[sm.CurrentTokenIndex] == ".")
+            if (sm.TokensData[sm.CurrentTokenIndex].Token == TokenEnum.Point)
             {
                 string[] tokens = { "Console" };
                 NeutralizerAddOrChangeError(sm, tokens);
@@ -64,7 +64,7 @@ namespace CWCompil.State
                 sm.State.Enter(sm);
                 return;
             }
-            if (sm.Tokens[sm.CurrentTokenIndex] == "ReadLine")
+            if (sm.TokensData[sm.CurrentTokenIndex].Token == TokenEnum.KeywordReadLine)
             {
                 string[] tokens = { "Console", "." };
                 NeutralizerAddOrChangeError(sm, tokens);
@@ -72,7 +72,10 @@ namespace CWCompil.State
                 sm.State.Enter(sm);
                 return;
             }
-            sm.ErrorsData.Add(new(sm.Line, sm.GetIndexOfCurrentToken() + (sm.CurrentTokenIndex < sm.Tokens.Count ? sm.Offsets[sm.CurrentTokenIndex] : 0), $"\"{sm.Tokens[sm.CurrentTokenIndex]}\" не является ожидаемым. (Отбрасывается)"));
+            sm.ErrorsData.Add(new(
+                   sm.TokensData[(sm.CurrentTokenIndex < sm.TokensData.Count) ? sm.CurrentTokenIndex : sm.CurrentTokenIndex - 1].Line,
+                   sm.TokensData[(sm.CurrentTokenIndex < sm.TokensData.Count) ? sm.CurrentTokenIndex : sm.CurrentTokenIndex - 1].LocalIndex,
+                   $"\"{sm.TokensData[sm.CurrentTokenIndex].TokenValue}\" не является ожидаемым. (Отбрасывается)"));
             sm.CountDel++;
         }
     }

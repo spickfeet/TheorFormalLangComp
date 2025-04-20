@@ -73,6 +73,7 @@ namespace TheorFormalLangComp.RecursiveDescent
                 else
                 {
                     Index++;
+                    return;
                 }
             }
             if (Index < Tokens.Count && (Tokens[Index].Token != TokenTypesMath.Num && Tokens[Index].Token != TokenTypesMath.Id))
