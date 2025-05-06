@@ -74,6 +74,9 @@
     <None Update="resource\Справка\Регулярные выражения.htm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="resource\Справка\Рекурсивный спуск.htm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="resource\Справка\Сканер.htm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
