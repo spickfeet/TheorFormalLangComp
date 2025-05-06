@@ -44,5 +44,15 @@
 			<param name="Local" value="Сканер.htm">
 			</OBJECT>
 	</UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="&Dstrok;&aring;&ecirc;&oacute;&eth;&ntilde;&egrave;&acirc;&iacute;&ucirc;&eacute; &ntilde;&iuml;&oacute;&ntilde;&ecirc;">
+		<param name="Local" value="Рекурсивный спуск.htm">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="&Dstrok;&aring;&ecirc;&oacute;&eth;&ntilde;&egrave;&acirc;&iacute;&ucirc;&eacute; &ntilde;&iuml;&oacute;&ntilde;&ecirc;">
+			<param name="Local" value="Рекурсивный спуск.htm">
+			</OBJECT>
+	</UL>
 </UL>
 </BODY></HTML>
