@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<Title>Рекурсивный спуск</Title>
+</HEAD>
+<BODY>
+
+<h2>Грамматика G[E]:</h2>
+<br>
+<span>  E  => TA </span>
+<br>
+<span> A => e | + TA | - TA </span>
+<br>
+<span> T => OB  </span>
+<br>
+<span> B => e | *OB | / OB   </span>
+<br>
+<span>  O => num | id | (E) </span>
+<br>
+<br>
+<span> num - числовая константа Ц{Ц}  </span>
+<br>
+<span> id - идентификатор Б{Б|Ц}
+</span>
+<br>
+<span> Б - [A, B, …, Z], Ц - [0, 1, …, 9]
+  </span>
+<br>
+
+<h2>Язык</h2>
+<span>L(G[Е]) = {x &isin; VT* | E =>* x }</span>
+<br>
+<span>VT = {num, id, +, -, , /, (, )}</span>
+<br>
+<span>VN = {E, A, T, B, O} </span>
+<br>
+<span>Е - начальный нетерминал</span>
+<br>
+
+<h2>Тестовый пример</h2>
+<span>Выражение: 20+7-d</span>
+<br>
+<span>Последовательность разбора:  E--T--O--B--A--T--O--B--A--T--O--B--A--</span>
+<br>
+
+<h2>Классификация</h2>
+<span>Согласно классификации Хомского, грамматика G[E] является контекстно-свободной.</span>
+<br>
+<span>Все правила относятся к классу продукций: A => a, A &isin;  Vn, а &isin;  V* </span>
+<br>
+
+
+</BODY>
+</HTML>

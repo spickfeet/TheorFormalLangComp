@@ -124,7 +124,7 @@ namespace TheorFormalLangComp
         {
             var p = new Process();
             string currentDirectory = Directory.GetCurrentDirectory();
-            string fullPath = System.IO.Path.Combine(currentDirectory, "resource", "Справка", "Рекурсивный спуск.html");
+            string fullPath = System.IO.Path.Combine(currentDirectory, "resource", "Справка", "Рекурсивный спуск.htm");
             p.StartInfo = new ProcessStartInfo(fullPath)
             {
                 UseShellExecute = true
