@@ -143,5 +143,17 @@ namespace TheorFormalLangComp
         {
             throw new NotImplementedException();
         }
+
+        private void Parser(object sender, RoutedEventArgs e)
+        {
+            var p = new Process();
+            string currentDirectory = Directory.GetCurrentDirectory();
+            string fullPath = System.IO.Path.Combine(currentDirectory, "resource", "Справка", "Синтаксический анализатор.htm");
+            p.StartInfo = new ProcessStartInfo(fullPath)
+            {
+                UseShellExecute = true
+            };
+            p.Start();
+        }
     }
 }
