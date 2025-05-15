@@ -185,42 +185,42 @@ namespace TheorFormalLangComp.ViewModel
             {
                 return new DelegateCommand(() =>
                 {
-                    List<TokenData<TokenTypesMath>> tokens = MathTokenBuilder.CreateTokens(TextInput);
-                    RecursiveDescent.RecursiveDescent stateMachine = new(tokens);
-                    while (stateMachine.Index < stateMachine.Tokens.Count)
-                    {
-                        stateMachine.Start();
-                        stateMachine.StateHist.Add("\n");
-                    }
-                    DebugText = "Мини-ошибки, не нейтрализация:\n";
-                    if (stateMachine.Errors.Count == 0)
-                    {
-                        DebugText += "Ошибок нет\n\n";
-                    }
-                    foreach (var item in stateMachine.Errors)
-                    {
-                        DebugText += item;
-                    }
-
-                    DebugText += "Состояния\n";
-                    foreach (var item in stateMachine.StateHist)
-                    {
-                        DebugText += item + "__";
-                    }
-
-
-                    //List<TokenData<TokenEnum>> tokens = TokenConverter.CreateTokens(TextInput);
-                    //StateMachine stateMachine = new(tokens);
-                    //stateMachine.Start();
-                    //DebugText = "";
-                    //if (stateMachine.ErrorsData.Count == 0)
+                    //List<TokenData<TokenTypesMath>> tokens = MathTokenBuilder.CreateTokens(TextInput);
+                    //RecursiveDescent.RecursiveDescent stateMachine = new(tokens);
+                    //while (stateMachine.Index < stateMachine.Tokens.Count)
                     //{
-                    //    DebugText = "Ошибок нет";
+                    //    stateMachine.Start();
+                    //    stateMachine.StateHist.Add("\n");
                     //}
-                    //foreach (ErrorData errorData in stateMachine.ErrorsData)
+                    //DebugText = "Мини-ошибки, не нейтрализация:\n";
+                    //if (stateMachine.Errors.Count == 0)
                     //{
-                    //    DebugText += $"Строка: {errorData.Line} Глобальный индекс: {errorData.Index} Ошибка {errorData.Text} \n";
+                    //    DebugText += "Ошибок нет\n\n";
                     //}
+                    //foreach (var item in stateMachine.Errors)
+                    //{
+                    //    DebugText += item;
+                    //}
+
+                    //DebugText += "Состояния\n";
+                    //foreach (var item in stateMachine.StateHist)
+                    //{
+                    //    DebugText += item + "__";
+                    //}
+
+
+                    List<TokenData<TokenEnum>> tokens = TokenConverter.CreateTokens(TextInput);
+                    StateMachine stateMachine = new(tokens);
+                    stateMachine.Start();
+                    DebugText = "";
+                    if (stateMachine.ErrorsData.Count == 0)
+                    {
+                        DebugText = "Ошибок нет";
+                    }
+                    foreach (ErrorData errorData in stateMachine.ErrorsData)
+                    {
+                        DebugText += $"Строка: {errorData.Line} Глобальный индекс: {errorData.Index} Ошибка {errorData.Text} \n";
+                    }
 
 
                     //MailFinder mailFinder = new MailFinder();
