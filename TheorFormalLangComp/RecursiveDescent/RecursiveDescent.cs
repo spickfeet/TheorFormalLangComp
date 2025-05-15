@@ -21,7 +21,6 @@ namespace TheorFormalLangComp.RecursiveDescent
         }
         public void Start()
         {
-            Index = 0;
             E();
         }
         private void E()
@@ -39,11 +38,15 @@ namespace TheorFormalLangComp.RecursiveDescent
         private void A()
         {
             StateHist.Add("A");
-            if (Index < Tokens.Count && (Tokens[Index].Token == TokenTypesMath.Plus || Tokens[Index].Token == TokenTypesMath.Minus))
+            if (Index < Tokens.Count)
             {
-                Index++;
-                T();
-                A();
+                if ((Tokens[Index].Token == TokenTypesMath.Plus || Tokens[Index].Token == TokenTypesMath.Minus))
+                {
+                    StateHist.Add("+|-");
+                    Index++;
+                    T();
+                    A();
+                }
             }
         }
         private void O()
@@ -57,6 +60,7 @@ namespace TheorFormalLangComp.RecursiveDescent
             }
             if (Tokens[Index].Token == TokenTypesMath.OB)
             {
+                StateHist.Add("(");
                 Index++;
                 E();
                 if (Index >= Tokens.Count)
@@ -72,6 +76,7 @@ namespace TheorFormalLangComp.RecursiveDescent
                 }
                 else
                 {
+                    StateHist.Add(")");
                     Index++;
                     return;
                 }
@@ -79,7 +84,7 @@ namespace TheorFormalLangComp.RecursiveDescent
             if (Index < Tokens.Count && (Tokens[Index].Token != TokenTypesMath.Num && Tokens[Index].Token != TokenTypesMath.Id))
             {
                 StateHist.Add("ERROR");
-                Errors.Add($"Строка: {Tokens[Index].Line} Индекс: {Tokens[Index].LocalIndex}. <{Tokens[Index].TokenValue}> не является валидным\n");
+                Errors.Add($"Строка: {Tokens[Index].Line} Индекс: {Tokens[Index].LocalIndex}. <{Tokens[Index].TokenValue}> Нужен id или num\n");
             }
             Index++;
         }
@@ -88,6 +93,7 @@ namespace TheorFormalLangComp.RecursiveDescent
             StateHist.Add("B");
             if (Index < Tokens.Count && (Tokens[Index].Token == TokenTypesMath.Multiply || Tokens[Index].Token == TokenTypesMath.Div))
             {
+                StateHist.Add("*|/");
                 Index++;
                 O();
                 B();

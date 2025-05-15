@@ -187,7 +187,11 @@ namespace TheorFormalLangComp.ViewModel
                 {
                     List<TokenData<TokenTypesMath>> tokens = MathTokenBuilder.CreateTokens(TextInput);
                     RecursiveDescent.RecursiveDescent stateMachine = new(tokens);
-                    stateMachine.Start();
+                    while (stateMachine.Index < stateMachine.Tokens.Count)
+                    {
+                        stateMachine.Start();
+                        stateMachine.StateHist.Add("\n");
+                    }
                     DebugText = "Мини-ошибки, не нейтрализация:\n";
                     if (stateMachine.Errors.Count == 0)
                     {
@@ -201,7 +205,7 @@ namespace TheorFormalLangComp.ViewModel
                     DebugText += "Состояния\n";
                     foreach (var item in stateMachine.StateHist)
                     {
-                        DebugText += item + "--";
+                        DebugText += item + "__";
                     }
 
 
