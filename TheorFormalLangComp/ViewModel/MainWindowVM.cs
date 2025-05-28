@@ -192,6 +192,14 @@ namespace TheorFormalLangComp.ViewModel
                     //    stateMachine.Start();
                     //    stateMachine.StateHist.Add("\n");
                     //}
+                    //else
+                    //{
+                    //    foreach (ErrorData errorData in stateMachine.ErrorsData)
+                    //    {
+                    //        DebugText += $"Строка: {errorData.Line} Глобальный индекс: {errorData.Index} Ошибка {errorData.Text} \n";
+                    //    }
+                    //    DebugText += "\nВалидная строка:\n";
+                    //    DebugText += stateMachine.ValidLine;
                     //DebugText = "Мини-ошибки, не нейтрализация:\n";
                     //if (stateMachine.Errors.Count == 0)
                     //{
@@ -221,6 +229,8 @@ namespace TheorFormalLangComp.ViewModel
                     {
                         DebugText += $"Строка: {errorData.Line} Глобальный индекс: {errorData.Index} Ошибка {errorData.Text} \n";
                     }
+
+
 
 
                     //MailFinder mailFinder = new MailFinder();

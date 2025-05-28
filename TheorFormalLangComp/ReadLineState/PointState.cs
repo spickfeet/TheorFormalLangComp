@@ -18,6 +18,7 @@ namespace CWCompil.State
             }
             if (sm.TokensData[sm.CurrentTokenIndex].Token == TokenEnum.KeywordReadLine)
             {
+                sm.ValidLine += "ReadLine";
                 sm.CountDel = 0;
                 sm.State = new ReadLineState();
             }
@@ -34,6 +35,7 @@ namespace CWCompil.State
                 {
                     sm.CountDel = tokens.Length;
                 }
+                sm.ValidLine += tokens[i];
                 if (sm.CountDel != 0)
                 {
                     sm.ErrorsData[sm.ErrorsData.Count - sm.CountDel].Text = sm.ErrorsData[sm.ErrorsData.Count - sm.CountDel].Text.Replace("Отбрасывается", $"Заменяется на \"{tokens[i]}\"");

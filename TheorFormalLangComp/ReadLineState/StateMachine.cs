@@ -20,8 +20,10 @@ namespace CWCompil.State
         public int CountDel { get; set; }
         //public int Line {  get; set; }
         private Dictionary<int, int> _offsetsByIndexDict;
+        public string ValidLine { get; set; }
         public StateMachine(List<TokenData<TokenEnum>> tokensData)
         {
+            ValidLine = "";
             TokensData = tokensData;
             _offsetsByIndexDict = new();
             ErrorsData = new();
