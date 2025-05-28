@@ -217,10 +217,17 @@ namespace TheorFormalLangComp.ViewModel
                     //{
                     //    DebugText = "Ошибок нет";
                     //}
-                    //foreach (ErrorData errorData in stateMachine.ErrorsData)
+                    //else
                     //{
-                    //    DebugText += $"Строка: {errorData.Line} Глобальный индекс: {errorData.Index} Ошибка {errorData.Text} \n";
+                    //    foreach (ErrorData errorData in stateMachine.ErrorsData)
+                    //    {
+                    //        DebugText += $"Строка: {errorData.Line} Глобальный индекс: {errorData.Index} Ошибка {errorData.Text} \n";
+                    //    }
+                    //    DebugText += "\nВалидная строка:\n";
+                    //    DebugText += stateMachine.ValidLine;
                     //}
+
+
 
 
                     //MailFinder mailFinder = new MailFinder();
