@@ -20,13 +20,13 @@ namespace TheorFormalLangComp.ViewModel
         public string TextInput
         {
             get { return _textInput; }
-            set 
+            set
             {
                 Set(ref _textInput, value);
                 _fileSaved = false;
             }
         }
-        
+
         public string DebugText
         {
             get { return _debugText; }
@@ -115,7 +115,7 @@ namespace TheorFormalLangComp.ViewModel
         private void Create()
         {
             PromptSave();
-             TextInput = "";
+            TextInput = "";
             _fileWorker.OnPathChanged(null);
             _fileSaved = true;
 
@@ -185,12 +185,37 @@ namespace TheorFormalLangComp.ViewModel
             {
                 return new DelegateCommand(() =>
                 {
-                    //List<TokenData<TokenTypesMath>> tokens = MathTokenBuilder.CreateTokens(TextInput);
-                    //RecursiveDescent.RecursiveDescent stateMachine = new(tokens);
-                    //while (stateMachine.Index < stateMachine.Tokens.Count)
+                    List<TokenData<TokenTypesMath>> tokens = MathTokenBuilder.CreateTokens(TextInput);
+                    RecursiveDescent.RecursiveDescent stateMachine = new(tokens);
+                    while (stateMachine.Index < stateMachine.Tokens.Count)
+                    {
+                        stateMachine.Start();
+                        stateMachine.StateHist.Add("\n");
+                    }
+                    DebugText = "Мини-ошибки, не нейтрализация:\n";
+                    if (stateMachine.Errors.Count == 0)
+                    {
+                        DebugText += "Ошибок нет\n\n";
+                    }
+                    foreach (var item in stateMachine.Errors)
+                    {
+                        DebugText += item;
+                    }
+
+                    DebugText += "Состояния\n";
+                    foreach (var item in stateMachine.StateHist)
+                    {
+                        DebugText += item + "__";
+                    }
+
+
+                    //List<TokenData<TokenEnum>> tokens = TokenConverter.CreateTokens(TextInput);
+                    //StateMachine stateMachine = new(tokens);
+                    //stateMachine.Start();
+                    //DebugText = "";
+                    //if (stateMachine.ErrorsData.Count == 0)
                     //{
-                    //    stateMachine.Start();
-                    //    stateMachine.StateHist.Add("\n");
+                    //    DebugText = "Ошибок нет";
                     //}
                     //else
                     //{
@@ -200,35 +225,7 @@ namespace TheorFormalLangComp.ViewModel
                     //    }
                     //    DebugText += "\nВалидная строка:\n";
                     //    DebugText += stateMachine.ValidLine;
-                    //DebugText = "Мини-ошибки, не нейтрализация:\n";
-                    //if (stateMachine.Errors.Count == 0)
-                    //{
-                    //    DebugText += "Ошибок нет\n\n";
                     //}
-                    //foreach (var item in stateMachine.Errors)
-                    //{
-                    //    DebugText += item;
-                    //}
-
-                    //DebugText += "Состояния\n";
-                    //foreach (var item in stateMachine.StateHist)
-                    //{
-                    //    DebugText += item + "__";
-                    //}
-
-
-                    List<TokenData<TokenEnum>> tokens = TokenConverter.CreateTokens(TextInput);
-                    StateMachine stateMachine = new(tokens);
-                    stateMachine.Start();
-                    DebugText = "";
-                    if (stateMachine.ErrorsData.Count == 0)
-                    {
-                        DebugText = "Ошибок нет";
-                    }
-                    foreach (ErrorData errorData in stateMachine.ErrorsData)
-                    {
-                        DebugText += $"Строка: {errorData.Line} Глобальный индекс: {errorData.Index} Ошибка {errorData.Text} \n";
-                    }
 
 
 
